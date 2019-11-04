@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.scijava</groupId>
+		<artifactId>pom-scijava</artifactId>
+		<version>26.0.0</version>
+		<relativePath />
+	</parent>
+
+	<repositories>
+		<repository>
+			<id>scijava.public</id>
+			<url>https://maven.scijava.org/content/groups/public</url>
+		</repository>
+	</repositories>
+
+    <groupId>com.google.sites.piotrwendykier</groupId>
+    <artifactId>ParallelIterativeDeconvolution</artifactId>
+    <version>1.11-SNAPSHOT</version>
+
+
+	<name>ParallelIterativeDeconvolution</name>
+
+	<description>Parallel Iterative Deconvolution is an ImageJ plugin for iterative deblurring. This plugin takes advantage of multi-core processors.</description>
+
+	<url>https://imagej.net/Parallel_Iterative_Deconvolution</url>
+
+	<inceptionYear>2009</inceptionYear>
+
+	<organization>
+		<name>Piotr Wendykier</name>
+		<url>https://imagej.net/Parallel_Iterative_Deconvolution</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>gpl_v3</name>
+			<url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+			<distribution>repo</distribution>
+			<comments>Covers all code EXCEPT edu.emory.mathcs.restoretools.iterative.method.wpl package.</comments>
+		</license>
+		<license>
+			<name>OptiNav</name>
+			<url>https://sites.google.com/site/piotrwendykier/software/deconvolution/paralleliterativedeconvolution</url>
+			<distribution>repo</distribution>
+			<comments>This license covers the edu.emory.mathcs.restoretools.iterative.method.wpl package.</comments>
+		</license>
+	</licenses>
+
+	<developers>
+
+		<developer>
+			<id>pwendykier</id>
+			<name>Piotr Wendykier</name>
+			<url>https://imagej.net/Parallel_Iterative_Deconvolution</url>
+			<roles>
+				<role>lead</role>
+				<role>developer</role>
+				<role>debugger</role>
+				<role>reviewer</role>
+				<role>support</role>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+
+	</developers>
+
+	<contributors>
+		<contributor>
+			<name>Steven J. West</name>
+			<url>https://www.thenaturalobserver.co.uk/</url>
+			<roles><role>maintainer</role></roles>
+			<properties><id>sjwest</id></properties>
+		</contributor>
+	</contributors>
+
+	<mailingLists>
+		<mailingList>
+			<name>Image.sc Forum</name>
+			<archive>https://forum.image.sc/tags/imagej</archive>
+		</mailingList>
+	</mailingLists>
+
+	<scm>
+		<connection>scm:git:git://github.com/stevenjwest/iterativedeconv</connection>
+		<developerConnection>scm:git:git@github.com:stevenjwest/iterativedeconv</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/stevenjwest/iterativedeconv</url>
+	</scm>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/stevenjwest/iterativedeconv/issues</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>None</system>
+	</ciManagement>
+
+
+	<dependencies>
+
+	  	<!--IMAGEJ-->
+		<dependency>
+      		<groupId>net.imagej</groupId>
+      		<artifactId>ij</artifactId>
+     		<!--version>1.50b</version-->
+    	</dependency>
+
+		<!-- https://mvnrepository.com/artifact/net.sourceforge.parallelcolt/parallelcolt -->
+		<dependency>
+    		<groupId>net.sourceforge.parallelcolt</groupId>
+    		<artifactId>parallelcolt</artifactId>
+    		<version>0.10.0</version>
+		</dependency>
+
+	</dependencies>
+
+</project>
