@@ -5,13 +5,6 @@
 		http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.scijava</groupId>
-		<artifactId>pom-scijava</artifactId>
-		<version>26.0.0</version>
-		<relativePath />
-	</parent>
-
 	<repositories>
 		<repository>
 			<id>scijava.public</id>
@@ -19,7 +12,7 @@
 		</repository>
 	</repositories>
 
-    <groupId>com.google.sites.piotrwendykier</groupId>
+    <groupId>io.github.stevenjwest</groupId>
     <artifactId>ParallelIterativeDeconvolution</artifactId>
     <version>1.11</version>
     <packaging>jar</packaging>
@@ -27,7 +20,7 @@
 
 	<name>ParallelIterativeDeconvolution</name>
 	<description>Parallel Iterative Deconvolution is an ImageJ plugin for iterative deblurring. This plugin takes advantage of multi-core processors.</description>
-	<url>https://imagej.net/Parallel_Iterative_Deconvolution</url>
+	<url>https://github.com/stevenjwest/iterativedeconv</url>
 	<inceptionYear>2009</inceptionYear>
 
 	<organization>
@@ -107,7 +100,7 @@
 		<dependency>
       		<groupId>net.imagej</groupId>
       		<artifactId>ij</artifactId>
-     		<!--version>1.50b</version-->
+     		<version>1.50b</version>
     	</dependency>
 
 		<!-- https://mvnrepository.com/artifact/net.sourceforge.parallelcolt/parallelcolt -->
@@ -124,6 +117,7 @@
 	   <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
 	    <artifactId>maven-source-plugin</artifactId>
+	    <version>3.2.0</version>
 	    <executions>
 	     <execution>
 	      <id>attach-sources</id>
@@ -136,6 +130,7 @@
 	   <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
 	    <artifactId>maven-javadoc-plugin</artifactId>
+	    <version>3.1.1</version>
 	    <executions>
 	     <execution>
 	      <id>attach-javadocs</id>
@@ -148,6 +143,7 @@
 	   <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
 	    <artifactId>maven-gpg-plugin</artifactId>
+	    <version>1.6</version>
 	    <executions>
 	     <execution>
 	      <id>sign-artifacts</id>
