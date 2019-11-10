@@ -14,7 +14,7 @@
 
     <groupId>io.github.stevenjwest</groupId>
     <artifactId>ParallelIterativeDeconvolution</artifactId>
-    <version>1.11</version>
+    <version>1.11-SNAPSHOT</version>
     <packaging>jar</packaging>
 
 
@@ -197,18 +197,6 @@
 		<version>1.9.5</version>
 		</dependency>
 		</dependencies>
-		</plugin>
-		
-		<plugin>
-		<groupId>org.sonatype.plugins</groupId>
-		<artifactId>nexus-staging-maven-plugin</artifactId>
-		<version>1.6.7</version>
-		<extensions>true</extensions>
-		<configuration>
-		<serverId>ossrh</serverId>
-		<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-		<autoReleaseAfterClose>true</autoReleaseAfterClose>
-		</configuration>
 		</plugin>
 		
 	  </plugins>
