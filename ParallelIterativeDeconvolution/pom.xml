@@ -11,7 +11,7 @@
 
     <groupId>io.github.stevenjwest</groupId>
     <artifactId>ParallelIterativeDeconvolution</artifactId>
-    <version>1.12-SNAPSHOT</version>
+    <version>1.12</version>
     <packaging>jar</packaging>
 
 
@@ -77,7 +77,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/stevenjwest/iterativedeconv</connection>
 		<developerConnection>scm:git:git@github.com:stevenjwest/iterativedeconv</developerConnection>
-		<tag>ParallelIterativeDeconvolution-1.11</tag>
+		<tag>ParallelIterativeDeconvolution-1.12</tag>
 		<url>https://github.com/stevenjwest/iterativedeconv</url>
 	</scm>
 
