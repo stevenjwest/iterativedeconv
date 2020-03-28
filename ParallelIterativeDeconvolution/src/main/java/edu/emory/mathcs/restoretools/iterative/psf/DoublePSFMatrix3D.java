@@ -32,7 +32,7 @@ import edu.emory.mathcs.restoretools.iterative.IterativeEnums.BoundaryType;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.PSFType;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.PaddingType;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.ResizingType;
-import edu.emory.mathcs.utils.ConcurrencyUtils;
+import edu.emory.mathcs.utils.pc.ConcurrencyUtils;
 
 /**
  * This class is used for matrix-vector multiplications involving PSF images.

@@ -48,7 +48,7 @@ import edu.emory.mathcs.restoretools.iterative.DoubleCommon2D;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.BoundaryType;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.PaddingType;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.ResizingType;
-import edu.emory.mathcs.utils.ConcurrencyUtils;
+import edu.emory.mathcs.utils.pc.ConcurrencyUtils;
 
 /**
  * Wiener Filter Preconditioned Landweber 2D. This is a nonnegatively constrained method.

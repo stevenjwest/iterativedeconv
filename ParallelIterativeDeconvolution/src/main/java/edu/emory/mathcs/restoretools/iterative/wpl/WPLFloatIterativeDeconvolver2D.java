@@ -48,7 +48,7 @@ import edu.emory.mathcs.restoretools.iterative.FloatCommon2D;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.BoundaryType;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.PaddingType;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.ResizingType;
-import edu.emory.mathcs.utils.ConcurrencyUtils;
+import edu.emory.mathcs.utils.pc.ConcurrencyUtils;
 
 
 /**

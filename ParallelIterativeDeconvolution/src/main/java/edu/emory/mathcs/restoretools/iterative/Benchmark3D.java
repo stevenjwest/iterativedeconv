@@ -43,7 +43,7 @@ import edu.emory.mathcs.restoretools.iterative.mrnsd.MRNSDOptions;
 import edu.emory.mathcs.restoretools.iterative.wpl.WPLDoubleIterativeDeconvolver3D;
 import edu.emory.mathcs.restoretools.iterative.wpl.WPLFloatIterativeDeconvolver3D;
 import edu.emory.mathcs.restoretools.iterative.wpl.WPLOptions;
-import edu.emory.mathcs.utils.ConcurrencyUtils;
+import edu.emory.mathcs.utils.pc.ConcurrencyUtils;
 
 /**
  * Benchmark for Parallel Iterative Deconvolution 3D

@@ -39,7 +39,7 @@ import edu.emory.mathcs.restoretools.iterative.IterativeEnums.BoundaryType;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.PSFType;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.PaddingType;
 import edu.emory.mathcs.restoretools.iterative.psf.FloatPSFMatrix2D;
-import edu.emory.mathcs.utils.ConcurrencyUtils;
+import edu.emory.mathcs.utils.pc.ConcurrencyUtils;
 
 /**
  * 2D preconditioner based on the Fast Fourier Transform.

@@ -49,7 +49,7 @@ import edu.emory.mathcs.restoretools.iterative.FloatCommon3D;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.BoundaryType;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.PaddingType;
 import edu.emory.mathcs.restoretools.iterative.IterativeEnums.ResizingType;
-import edu.emory.mathcs.utils.ConcurrencyUtils;
+import edu.emory.mathcs.utils.pc.ConcurrencyUtils;
 
 /**
  * Wiener Filter Preconditioned Landweber 3D. This is a nonnegatively constrained method.
