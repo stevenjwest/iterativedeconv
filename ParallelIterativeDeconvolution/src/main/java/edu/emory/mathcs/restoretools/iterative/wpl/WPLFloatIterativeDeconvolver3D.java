@@ -399,24 +399,54 @@ public class WPLFloatIterativeDeconvolver3D {
         return imX;
     }
 
+    /**
+     * 
+     * convolveFD
+     * 
+     * convolve H1 by H2 and put result into Result.
+     * 
+     * @param slices
+     * @param rows
+     * @param columns
+     * @param H1
+     * @param H2
+     * @param Result
+     */
     private static void convolveFD(final int slices, final int rows, final int columns, FloatMatrix3D H1, FloatMatrix3D H2, FloatMatrix3D Result) {
-        final float[] h1 = (float[]) H1.elements();
+        
+    	// get elements of H1, H2, Result to accuracy float:
+    	final float[] h1 = (float[]) H1.elements();
         final float[] h2 = (float[]) H2.elements();
         final float[] result = (float[]) Result.elements();
+        
+        // define the STRIDE by slice and row
         final int sliceStride = columns * rows;
         final int rowStride = columns;
 
         int np = ConcurrencyUtils.getNumberOfThreads();
+        
+        // only generate multiple threads if its possible && image is big enough
         if ((np > 1) && (slices * columns * rows >= ConcurrencyUtils.getThreadsBeginN_3D())) {
-            Future<?>[] futures = new Future[np];
-            int k = slices / np;
-            for (int j = 0; j < np; j++) {
+            Future<?>[] futures = new Future[np]; //create Future objs to track threads
+            int k = slices / np; // give the floor of num slices over num threads to compute slice interval
+                                 // for each thread to process
+            
+            for (int j = 0; j < np; j++) { // loop to create threads
+            	
+            	// use k as the slice INTERVAL - how many slices to process per thread!
                 final int firstSlice = j * k;
                 final int lastSlice = (j == np - 1) ? slices : firstSlice + k;
+                
+                // for each thread, submit a new Runnable:
                 futures[j] = ConcurrencyUtils.submit(new Runnable() {
                     public void run() {
-                        int sC, cC, rC, idx1, idx2;
+                    	// slice, col, row MODULUS values:
+                        int sC, cC, rC;
+                        // INDICES of image 1d arrays
+                        int idx1, idx2;
+                        // float result of h2 processing
                         float h2e, h2o;
+                        
                         for (int s = firstSlice; s < lastSlice; s++) {
                             sC = (slices - s) % slices;
                             for (int r = 0; r < rows; r++) {
@@ -425,15 +455,18 @@ public class WPLFloatIterativeDeconvolver3D {
                                     cC = (columns - c) % columns;
                                     idx1 = c + rowStride * r + sliceStride * s;
                                     idx2 = cC + rowStride * rC + sliceStride * sC;
-                                    h2e = (h2[idx1] + h2[idx2]) / 2;
-                                    h2o = (h2[idx1] - h2[idx2]) / 2;
+                                    h2e = (h2[idx1] + h2[idx2]) / 2; // compute mean of h2 pixels at idx1/idx2
+                                    h2o = (h2[idx1] - h2[idx2]) / 2; // compute diff midpoint of h2 pixels at idx1/idx2
                                     result[idx1] = (float) (h1[idx1] * h2e + h1[idx2] * h2o);
                                     cC = (columns - c - 1) % columns;
                                     idx1 = c + 1 + rowStride * r + sliceStride * s;
                                     idx2 = cC + rowStride * rC + sliceStride * sC;
-                                    h2e = (h2[idx1] + h2[idx2]) / 2;
-                                    h2o = (h2[idx1] - h2[idx2]) / 2;
-                                    result[idx1] = (float) (h1[idx1] * h2e + h1[idx2] * h2o);
+                                    if(idx1>=h2.length) { } // do NOTTHING as there is no result to compute!
+                                    else {
+                                    	h2e = (h2[idx1] + h2[idx2]) / 2;
+                                    	h2o = (h2[idx1] - h2[idx2]) / 2;
+                                    	result[idx1] = (float) (h1[idx1] * h2e + h1[idx2] * h2o);
+                                    }
                                 }
                             }
                         }
@@ -449,18 +482,21 @@ public class WPLFloatIterativeDeconvolver3D {
                 for (int r = 0; r < rows; r++) {
                     rC = (rows - r) % rows;
                     for (int c = 0; c < columns; c += 2) {
-                        cC = (columns - c) % columns;
+                    	cC = (columns - c) % columns;
                         idx1 = c + rowStride * r + sliceStride * s;
                         idx2 = cC + rowStride * rC + sliceStride * sC;
-                        h2e = (h2[idx1] + h2[idx2]) / 2;
-                        h2o = (h2[idx1] - h2[idx2]) / 2;
+                        h2e = (h2[idx1] + h2[idx2]) / 2; // compute mean of h2 pixels at idx1/idx2
+                        h2o = (h2[idx1] - h2[idx2]) / 2; // compute diff midpoint of h2 pixels at idx1/idx2
                         result[idx1] = (float) (h1[idx1] * h2e + h1[idx2] * h2o);
                         cC = (columns - c - 1) % columns;
                         idx1 = c + 1 + rowStride * r + sliceStride * s;
                         idx2 = cC + rowStride * rC + sliceStride * sC;
-                        h2e = (h2[idx1] + h2[idx2]) / 2;
-                        h2o = (h2[idx1] - h2[idx2]) / 2;
-                        result[idx1] = (float) (h1[idx1] * h2e + h1[idx2] * h2o);
+                        if(idx1>=h2.length) { } // do NOTTHING as there is no result to compute!
+                        else {
+                        	h2e = (h2[idx1] + h2[idx2]) / 2; // compute mean of h2 pixels at idx1/idx2
+                        	h2o = (h2[idx1] - h2[idx2]) / 2; // compute diff midpoint of h2 pixels at idx1/idx2
+                        	result[idx1] = (float) (h1[idx1] * h2e + h1[idx2] * h2o);
+                        }
                     }
                 }
             }
