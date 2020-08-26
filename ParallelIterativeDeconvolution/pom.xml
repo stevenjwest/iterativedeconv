@@ -11,7 +11,7 @@
 
     <groupId>io.github.stevenjwest</groupId>
     <artifactId>ParallelIterativeDeconvolution</artifactId>
-    <version>1.12</version>
+    <version>1.13</version>
     <packaging>jar</packaging>
 
 
